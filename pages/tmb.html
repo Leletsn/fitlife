@@ -18,6 +18,7 @@
         <a href="../index.html">Fitlife</a>
     
         <ul>
+            <li><a href="..index.html">Home</a></li>
             <li><a href="./imc.html">IMC</a></li>
             <li><a href="./tmb.html">TMB</a></li>
             <li><a href="./water.html">Água</a></li>
@@ -26,14 +27,47 @@
 
      <main>
         <section>
-            <h3>TMB</h3>
+            <form action="">
 
-            <P>Em breve você poderá calcular seu TMB aqui.</P>
+                <div>
+                    <label for="">Gênero</label>
+                    <select name="" id="gender">
+                        <option value="female">Feminino</option>
+                        <option value="male">Masculino</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="height"">Altura (cm)</label>
+                    <input type="number" id=""height" placeholder="Ex: 162">
+                </div>
+
+                <div>
+                    <label for="weight">Peso (kg)</label>
+                    <input type="number" id="weight" placeholder="Ex: 58">
+                </div>
+
+                <div>
+                    <label for="age">Idade (anos)</label>
+                    <input type="number" id="age" placeholder="18">
+                </div>
+
+                <button>Calcular calorias</button>
+            </form>
 
             <a href="../index.html">Voltar</a>
+
+            <div>
+                <p>Gasto calórico basal:</p>
+                <p>0000</p>
+                <p>Kcal/dia</p>
+            </div>
+
         </section>
     </main>
 
+    <footer>
+        <p>© 2026 Fitflie</p>
+    </footer>
 </body>
-
 </html>

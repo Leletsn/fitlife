@@ -1,55 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <title>Fitlife - IMC</title>
-</head>
+  </head>
 
-<body style="font-family: Poppins">
-
+  <body style="font-family: Poppins">
     <nav>
-        <a href="../index.html">Fitlife</a>
-    
-        <ul>
-            <li><a href="./imc.html">IMC</a></li>
-            <li><a href="./tmb.html">TMB</a></li>
-            <li><a href="./water.html">Água</a></li>
-        </ul>
+      <a href="../index.html">Fitlife</a>
+
+      <ul>
+        <li><a href="..index.html">Home</a></li>
+        <li><a href="./imc.html">IMC</a></li>
+        <li><a href="./tmb.html">TMB</a></li>
+        <li><a href="./water.html">Água</a></li>
+      </ul>
     </nav>
 
-
     <main>
-        <section>
-            <h3>IMC</h3>
-            <p>Em breve você poderá calcular seu IMC aqui.</p>
+      <section>
+        <h3>IMC</h3>
+        <p>Em breve você poderá calcular seu IMC aqui.</p>
 
-            <form action="">
+        <form action="">
+          <div>
+            <label for="weight">Peso (kg):</label>
+            <input type="number" placeholder="Ex: 58" id="weight" />
+          </div>
 
-                <label for="weight">Peso (kg):</label>
-                <input type="number" placeholder="Ex: 70" id="weight">
+          <div>
+            <label for="height">Altura (m):</label>
+            <input type="number" placeholder="Ex: 1.62" id="height" />
+          </div>
 
-                <label for="height">Altura (m):</label>
-                <input type="number" placeholder="Ex: 1.75" id="height">
+          <button>Calcular</button>
+        </form>
 
-                <button>Calcular</button>
-            </form> 
+        <div>
+          <p>Seu IMC é:</p>
+          <p>00.0</p>
+          <p>Classificação</p>
+        </div>
 
-            <div>
-                <p>Seu IMC é:</p>
-                <p>00.0</p>
-                <p>Classificação</p>
-            </div>
-
-            <a href="../index.html">Voltar</a>
-        </section>
+        <a href="../index.html">Voltar</a>
+      </section>
     </main>
 
-</body>
-
+    <footer>
+      <p>© 2026 Fitflie</p>
+    </footer>
+  </body>
 </html>
