@@ -1,30 +1,45 @@
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #00b894;
+    --primary-dark: #019477;
+    --secondary-color: #2d3436;
+    --background-color: #f0f2f5;
+    --card-color: #ffffff;
+    --text-color: #333333;
+    --muted-color: #636e72;
+    --danger-color: #d63031;
+    --water-color: #0984e3;
+    --border-color: #dfe6e9;
 }
 
 body {
-    background-color: #F0F2F5;
+    background-color: var(--background-color);
     font-family: Poppins;
     color: #333;
 }
 
 nav {
-    display: flex; /*deixar itens um ao lado do outro*/
-    justify-content: space-between; /* tag a tendo espaçamento da tag ul */
-    align-items: center; /* centraliza itens da vertical */
+    display: flex;
+    /*deixar itens um ao lado do outro*/
+    justify-content: space-between;
+    /* tag a tendo espaçamento da tag ul */
+    align-items: center;
+    /* centraliza itens da vertical */
 
-    padding: 0 80px;
+    padding: 0 5rem;
 
-    background-color: #fff;
-    box-shadow: 0px 2px 8px;
-    height: 80px;
+    background-color: var(--background-color);
+    height: 5rem;
 }
 
 #logo {
-    font-size: 24px;
-    color: #00b894;
+    font-size: 1.5rem;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
 }
@@ -32,16 +47,73 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 24px;
+    gap: 1.5rem;
 }
 
 .nav-link {
     text-decoration: none;
-    color: #2d3436;
-    font-size: 16px;
+    color: var(--secondary-color);
+    font-size: 1rem;
+
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color)
 }
 
 .nav-link.active {
-    border-bottom: 3px #00b894 solid;
-    color: #00b894;
+    border-bottom: 3px var(--primary-color) solid;
+    color: var(--primary-color)
+}
+
+.header-container {
+    text-align: center;
+
+    padding: 2.5rem 0;
+}
+
+.header-container h1 {
+    font-size: 2.5rem;
+}
+
+.header-container span {
+    color: var(--primary-color);
+}
+
+main {
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.cards-section {
+    display: flex;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.card {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+
+    transition: 0.4s;
+
+    /* box-shadow: HORIZONTAL VERTICAL BLUR SPREAD COLOR; */
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
