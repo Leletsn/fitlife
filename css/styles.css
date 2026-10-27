@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -19,21 +20,16 @@
 
 body {
     background-color: var(--background-color);
-    font-family: Poppins;
-    color: #333;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color);
 }
 
 nav {
     display: flex;
-    /*deixar itens um ao lado do outro*/
     justify-content: space-between;
-    /* tag a tendo espaçamento da tag ul */
     align-items: center;
-    /* centraliza itens da vertical */
-
     padding: 0 5rem;
-
-    background-color: var(--background-color);
+    background-color: var(--card-color);
     height: 5rem;
 }
 
@@ -54,22 +50,20 @@ nav {
     text-decoration: none;
     color: var(--secondary-color);
     font-size: 1rem;
-
     transition: 0.2s;
 }
 
 .nav-link:hover {
-    color: var(--primary-color)
+    color: var(--primary-color);
 }
 
 .nav-link.active {
-    border-bottom: 3px var(--primary-color) solid;
-    color: var(--primary-color)
+    border-bottom: 3px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
 .header-container {
     text-align: center;
-
     padding: 2.5rem 0;
 }
 
@@ -82,28 +76,31 @@ nav {
 }
 
 main {
-    width: 60vw;
+    width: 80vw;
     margin: 0 auto;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cards-section {
     display: flex;
+    justify-content: center;
     gap: 1.5rem;
     text-align: center;
+    flex-wrap: wrap;
 }
 
 .card {
-    background-color: var(--background-color);
+    background-color: var(--card-color);
     color: var(--secondary-color);
     padding: 1.5rem;
     border-radius: 10px;
     text-align: center;
     text-decoration: none;
-    width: 100%;
-
+    width: 15rem;
     transition: 0.4s;
-
-    /* box-shadow: HORIZONTAL VERTICAL BLUR SPREAD COLOR; */
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
 }
 
@@ -116,4 +113,122 @@ main {
     font-size: 3rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
+}
+
+.tool-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+    background-color: var(--card-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.tool-container-title {
+    text-align: center;
+}
+
+.tool-container-title h2 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+}
+
+.tool-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.8rem;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.action-btn {
+    display: block;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-back {
+    background-color: var(--secondary-color);
+}
+
+.btn-back:hover {
+    background-color: var(--text-color);
+}
+
+.result-box {
+    margin-top: 1.8rem;
+    padding: 1rem;
+    background-color: #e8f8f5;
+    border-radius: 10px;
+    text-align: center;
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
+    color: var(--muted-color);
+}
+
+@media (max-width: 490px) {
+    nav {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        width: 90vw;
+    }
+
+    .tool-container {
+        padding: 1rem;
+    }
 }
