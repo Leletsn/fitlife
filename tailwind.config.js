@@ -1,8 +1,16 @@
-// configuração do Tailwind (CDN) compartilhada por todas as páginas
 tailwind.config = {
     theme: {
         extend: {
             fontFamily: { sans: ["Poppins", "sans-serif"] },
+            keyframes: {
+                rise: {
+                    from: { opacity: "0", transform: "translateY(14px)" },
+                    to: { opacity: "1", transform: "none" },
+                },
+            },
+            animation: {
+                rise: "rise 600ms cubic-bezier(0.16, 1, 0.3, 1) backwards",
+            },
             colors: {
                 primary: { DEFAULT: "#00b894", dark: "#019477" },
                 secondary: "#2d3436",

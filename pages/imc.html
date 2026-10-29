@@ -1,40 +1,81 @@
 <!doctype html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../tailwind.config.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
 
     <title>FitLife - IMC</title>
-</head>
+  </head>
 
-<body class="bg-page font-sans text-ink">
-    <nav class="flex h-auto flex-col items-center justify-center gap-2 bg-white p-4 min-[491px]:h-20 min-[491px]:flex-row min-[491px]:justify-between min-[491px]:px-20 min-[491px]:py-0">
-        <a href="../index.html" class="text-2xl font-semibold text-primary no-underline">
-            <i class="fas fa-heartbeat"></i>
-            FitLife
-        </a>
+  <body class="bg-page font-sans text-ink selection:bg-primary/30">
+    <nav
+      class="flex h-auto flex-col items-center justify-center gap-2 bg-white p-4 min-[491px]:h-20 min-[491px]:flex-row min-[491px]:justify-between min-[491px]:px-20 min-[491px]:py-0"
+    >
+      <a
+        href="../index.html"
+        class="text-2xl font-semibold text-primary no-underline"
+      >
+        <i class="fas fa-heartbeat"></i>
+        FitLife
+      </a>
 
-        <ul class="flex list-none flex-wrap justify-center gap-3 min-[491px]:gap-6">
-            <li><a href="../index.html" class="text-secondary no-underline transition hover:text-primary">Home</a></li>
-            <li><a href="./imc.html" class="border-b-[3px] border-primary text-primary no-underline">IMC</a></li>
-            <li><a href="./tmb.html" class="text-secondary no-underline transition hover:text-primary">TMB</a></li>
-            <li><a href="./water.html" class="text-secondary no-underline transition hover:text-primary">Água</a></li>
-        </ul>
+      <ul
+        class="flex list-none flex-wrap justify-center gap-3 min-[491px]:gap-6"
+      >
+        <li>
+          <a
+            href="../index.html"
+            class="text-secondary no-underline transition hover:text-primary"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="./imc.html"
+            class="border-b-[3px] border-primary text-primary no-underline"
+            >IMC</a
+          >
+        </li>
+        <li>
+          <a
+            href="./tmb.html"
+            class="text-secondary no-underline transition hover:text-primary"
+            >TMB</a
+          >
+        </li>
+        <li>
+          <a
+            href="./water.html"
+            class="text-secondary no-underline transition hover:text-primary"
+            >Água</a
+          >
+        </li>
+      </ul>
     </nav>
 
-    <main class="mx-auto flex w-[90vw] items-center justify-center py-8 min-[491px]:w-[80vw]">
-        <section x-data="{
+    <main
+      class="mx-auto flex w-[90vw] items-center justify-center py-8 min-[491px]:w-[80vw]"
+    >
+      <section
+        x-data="{
                 weight: '',
                 height: '',
                 bmi: null,
@@ -47,41 +88,71 @@
                         : 'Obesidade';
                 },
             }"
-            class="flex w-full flex-col gap-4 rounded-[10px] bg-white p-4 shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] min-[491px]:p-8">
-            <div class="text-center">
-                <h2 class="text-[1.8rem] text-secondary"><i class="fas fa-weight"></i> Cálculo de IMC</h2>
-            </div>
+        class="motion-safe:animate-rise flex w-full flex-col gap-4 rounded-[10px] bg-white p-4 shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] min-[491px]:p-8"
+      >
+        <div class="text-center">
+          <h2 class="text-[1.8rem] text-secondary">
+            <i class="fas fa-weight"></i> Cálculo de IMC
+          </h2>
+        </div>
 
-            <form @submit.prevent="calculate()" class="flex flex-col gap-4">
-                <div class="flex flex-col gap-2">
-                    <label for="weight" class="font-semibold text-secondary">Peso (kg)</label>
-                    <input type="number" step="any" min="1" required placeholder="Ex: 70" id="weight" x-model.number="weight"
-                        class="rounded-[5px] border-2 border-line p-3 font-[inherit] focus:border-primary focus:outline-none" />
-                </div>
+        <form @submit.prevent="calculate()" class="flex flex-col gap-4">
+          <div class="flex flex-col gap-2">
+            <label for="weight" class="font-semibold text-secondary"
+              >Peso (kg)</label
+            >
+            <input
+              type="number"
+              step="any"
+              min="1"
+              required
+              placeholder="Ex: 70"
+              id="weight"
+              x-model.number="weight"
+              class="rounded-[5px] border-2 border-line p-3 font-[inherit] transition-colors focus:border-primary focus:outline-none"
+            />
+          </div>
 
-                <div class="flex flex-col gap-2">
-                    <label for="height" class="font-semibold text-secondary">Altura (m)</label>
-                    <input type="number" step="any" min="0.5" required placeholder="Ex: 1.7" id="height" x-model.number="height"
-                        class="rounded-[5px] border-2 border-line p-3 font-[inherit] focus:border-primary focus:outline-none" />
-                </div>
+          <div class="flex flex-col gap-2">
+            <label for="height" class="font-semibold text-secondary"
+              >Altura (m)</label
+            >
+            <input
+              type="number"
+              step="any"
+              min="0.5"
+              required
+              placeholder="Ex: 1.7"
+              id="height"
+              x-model.number="height"
+              class="rounded-[5px] border-2 border-line p-3 font-[inherit] transition-colors focus:border-primary focus:outline-none"
+            />
+          </div>
 
-                <button type="submit"
-                    class="cursor-pointer rounded-[10px] bg-primary p-3 text-center font-semibold text-white transition hover:bg-primary-dark">Calcular</button>
-                <a href="../index.html"
-                    class="rounded-[10px] bg-secondary p-3 text-center font-semibold text-white no-underline transition hover:bg-ink">Voltar</a>
-            </form>
+          <button
+            type="submit"
+            class="cursor-pointer rounded-[10px] bg-primary p-3 text-center font-semibold text-white transition hover:bg-primary-dark motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            Calcular
+          </button>
+          <a
+            href="../index.html"
+            class="rounded-[10px] bg-secondary p-3 text-center font-semibold text-white no-underline transition hover:bg-ink motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+            >Voltar</a
+          >
+        </form>
 
-            <div class="mt-7 rounded-[10px] bg-[#e8f8f5] p-4 text-center">
-                <p>Seu IMC é:</p>
-                <p x-text="bmi === null ? '00.0' : bmi.toFixed(1)">00.0</p>
-                <p x-text="category || 'Classificação'">Classificação</p>
-            </div>
-        </section>
+        <div class="mt-7 rounded-[10px] bg-[#e8f8f5] p-4 text-center transition duration-500"
+                :class="bmi === null ? 'opacity-50' : 'opacity-100 ring-2 ring-primary/40'">
+          <p>Seu IMC é:</p>
+          <p x-text="bmi === null ? '00.0' : bmi.toFixed(1)">00.0</p>
+          <p x-text="category || 'Classificação'">Classificação</p>
+        </div>
+      </section>
     </main>
 
     <footer class="p-4 text-center text-muted">
-        <p>© 2026 FitLife</p>
+      <p>© 2026 FitLife</p>
     </footer>
-</body>
-
+  </body>
 </html>
