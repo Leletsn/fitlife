@@ -142,8 +142,10 @@
           >
         </form>
 
-        <div class="mt-7 rounded-[10px] bg-[#e8f8f5] p-4 text-center transition duration-500"
-                :class="bmi === null ? 'opacity-50' : 'opacity-100 ring-2 ring-primary/40'">
+        <div
+          class="mt-7 rounded-[10px] bg-[#e8f8f5] p-4 text-center transition duration-500"
+          :class="bmi === null ? 'opacity-50' : 'opacity-100 ring-2 ring-primary/40'"
+        >
           <p>Seu IMC é:</p>
           <p x-text="bmi === null ? '00.0' : bmi.toFixed(1)">00.0</p>
           <p x-text="category || 'Classificação'">Classificação</p>

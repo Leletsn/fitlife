@@ -119,9 +119,14 @@
 
         <p>Total: <span x-text="total">0</span> ml</p>
 
-            <p x-show="percent === 100" style="display: none" x-transition.duration.500ms class="text-center font-semibold text-water">
-                <i class="fas fa-check"></i> Meta de hoje batida
-            </p>
+        <p
+          x-show="percent === 100"
+          style="display: none"
+          x-transition.duration.500ms
+          class="text-center font-semibold text-water"
+        >
+          <i class="fas fa-check"></i> Meta de hoje batida
+        </p>
 
         <a
           href="../index.html"

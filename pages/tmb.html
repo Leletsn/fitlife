@@ -170,8 +170,10 @@
           >
         </form>
 
-        <div class="mt-7 rounded-[10px] bg-[#e8f8f5] p-4 text-center transition duration-500"
-                :class="bmr === null ? 'opacity-50' : 'opacity-100 ring-2 ring-primary/40'">
+        <div
+          class="mt-7 rounded-[10px] bg-[#e8f8f5] p-4 text-center transition duration-500"
+          :class="bmr === null ? 'opacity-50' : 'opacity-100 ring-2 ring-primary/40'"
+        >
           <p>Gasto calórico basal:</p>
           <p x-text="bmr === null ? '0000' : bmr">0000</p>
           <p>Kcal/dia</p>
