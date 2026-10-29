@@ -13,10 +13,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../tailwind.config.js"></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"
-    ></script>
+    <script defer src="../js/water.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -78,31 +75,26 @@
       class="mx-auto flex w-[90vw] items-center justify-center py-8 min-[491px]:w-[80vw]"
     >
       <section
-        x-data="{
-                total: 0,
-                goal: 2500,
-                get percent() { return Math.min(100, Math.round(this.total / this.goal * 100)); },
-            }"
         class="motion-safe:animate-rise flex w-full flex-col gap-4 rounded-[10px] bg-white p-4 shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] min-[491px]:p-8"
       >
         <div class="text-center">
           <h1 class="text-[1.8rem] text-secondary">
             <i class="fas fa-tint"></i> Hidratação
           </h1>
-          <p>Meta: <span x-text="goal">2500</span>ml</p>
+          <p>Meta: <span id="water-goal">2500</span>ml</p>
         </div>
 
         <div class="flex flex-wrap items-center justify-center gap-4">
           <button
             type="button"
-            @click="total += 250"
+            id="add-water"
             class="cursor-pointer rounded-[10px] bg-water p-3 text-center font-semibold text-white transition hover:bg-water-dark motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-water"
           >
             + 250ml
           </button>
           <button
             type="button"
-            @click="total = 0"
+            id="reset-water"
             class="cursor-pointer rounded-[10px] bg-danger p-3 text-center font-semibold text-white transition hover:bg-danger-dark motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-danger"
           >
             Zerar
@@ -115,27 +107,25 @@
           aria-label="Progresso de hidratação"
           aria-valuemin="0"
           aria-valuemax="100"
-          :aria-valuenow="percent"
+          aria-valuenow="0"
+          id="water-progress"
         >
           <div
-            class="h-full rounded-l-[30px] bg-water transition-[width] duration-700 ease-out"
-            :class="percent === 100 && 'rounded-r-[30px]'"
-            :style="{ width: percent + '%' }"
+            id="water-bar"
+            class="h-full w-0 rounded-l-[30px] bg-water transition-[width] duration-700 ease-out"
           ></div>
         </div>
 
         <div role="status" class="flex flex-col gap-4">
           <p>
-            Total: <span x-text="total">0</span> ml (<span x-text="percent"
+            Total: <span id="water-total">0</span> ml (<span id="water-percent"
               >0</span
             >%)
           </p>
 
           <p
-            x-show="percent === 100"
-            style="display: none"
-            x-transition.duration.500ms
-            class="text-center font-semibold text-water"
+            id="goal-message"
+            class="hidden text-center font-semibold text-water"
           >
             <i class="fas fa-check"></i> Meta de hoje batida
           </p>

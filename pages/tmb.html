@@ -13,10 +13,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../tailwind.config.js"></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"
-    ></script>
+    <script defer src="../js/tmb.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -78,18 +75,6 @@
       class="mx-auto flex w-[90vw] items-center justify-center py-8 min-[491px]:w-[80vw]"
     >
       <section
-        x-data="{
-                gender: 'female',
-                height: '',
-                weight: '',
-                age: '',
-                bmr: null,
-                calculate() {
-                    const base = 10 * this.weight + 6.25 * this.height - 5 * this.age;
-                    this.bmr = Math.round(base + (this.gender === 'male' ? 5 : -161));
-                    this.$nextTick(() => this.$refs.result.scrollIntoView({ block: 'nearest' }));
-                },
-            }"
         class="motion-safe:animate-rise flex w-full flex-col gap-4 rounded-[10px] bg-white p-4 shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] min-[491px]:p-8"
       >
         <div class="text-center">
@@ -98,7 +83,7 @@
           </h1>
         </div>
 
-        <form @submit.prevent="calculate()" class="flex flex-col gap-4">
+        <form id="bmr-form" class="flex flex-col gap-4">
           <div class="flex flex-col gap-2">
             <label for="gender" class="font-semibold text-secondary"
               >Gênero</label
@@ -106,7 +91,6 @@
             <select
               name="gender"
               id="gender"
-              x-model="gender"
               class="rounded-[5px] border-2 border-field p-3 font-[inherit] transition-colors placeholder:text-gray-500 focus:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             >
               <option value="female">Feminino</option>
@@ -127,7 +111,6 @@
               max="250"
               inputmode="decimal"
               placeholder="Ex: 175"
-              x-model.number="height"
               class="rounded-[5px] border-2 border-field p-3 font-[inherit] transition-colors placeholder:text-gray-500 focus:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             />
           </div>
@@ -145,7 +128,6 @@
               max="500"
               inputmode="decimal"
               placeholder="Ex: 70"
-              x-model.number="weight"
               class="rounded-[5px] border-2 border-field p-3 font-[inherit] transition-colors placeholder:text-gray-500 focus:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             />
           </div>
@@ -162,7 +144,6 @@
               max="120"
               inputmode="numeric"
               placeholder="Ex: 18"
-              x-model.number="age"
               class="rounded-[5px] border-2 border-field p-3 font-[inherit] transition-colors placeholder:text-gray-500 focus:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             />
           </div>
@@ -181,17 +162,16 @@
         </form>
 
         <div
-          x-ref="result"
+          id="result"
           role="status"
           class="mt-7 rounded-[10px] bg-[#e8f8f5] p-4 text-center transition duration-500"
-          :class="bmr !== null && 'ring-2 ring-primary/40'"
         >
-          <p x-show="bmr === null" class="text-muted">
+          <p id="result-empty" class="text-muted">
             Preencha os campos e calcule.
           </p>
-          <div x-show="bmr !== null" style="display: none">
+          <div id="result-content" class="hidden">
             <p>Gasto calórico basal</p>
-            <p class="text-5xl font-bold text-brand" x-text="bmr"></p>
+            <p id="bmr-value" class="text-5xl font-bold text-brand"></p>
             <p>kcal por dia</p>
           </div>
         </div>
