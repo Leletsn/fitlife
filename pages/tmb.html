@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-BR">
 
@@ -11,70 +10,90 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind.config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
     <title>FitLife - TMB</title>
 </head>
 
-<body>
-    <nav>
-        <a href="../index.html" id="logo">
+<body class="bg-page font-sans text-ink">
+    <nav class="flex h-auto flex-col items-center justify-center gap-2 bg-white p-4 min-[491px]:h-20 min-[491px]:flex-row min-[491px]:justify-between min-[491px]:px-20 min-[491px]:py-0">
+        <a href="../index.html" class="text-2xl font-semibold text-primary no-underline">
             <i class="fas fa-heartbeat"></i>
             FitLife
         </a>
 
-        <ul class="nav-links">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="./imc.html" class="nav-link">IMC</a></li>
-            <li><a href="./tmb.html" class="nav-link active">TMB</a></li>
-            <li><a href="./water.html" class="nav-link">Água</a></li>
+        <ul class="flex list-none flex-wrap justify-center gap-3 min-[491px]:gap-6">
+            <li><a href="../index.html" class="text-secondary no-underline transition hover:text-primary">Home</a></li>
+            <li><a href="./imc.html" class="text-secondary no-underline transition hover:text-primary">IMC</a></li>
+            <li><a href="./tmb.html" class="border-b-[3px] border-primary text-primary no-underline">TMB</a></li>
+            <li><a href="./water.html" class="text-secondary no-underline transition hover:text-primary">Água</a></li>
         </ul>
     </nav>
 
-    <main>
-        <section class="tool-container">
-            <div class="tool-container-title">
-                <h2><i class="fas fa-fire"></i> Cálculo de TMB</h2>
+    <main class="mx-auto flex w-[90vw] items-center justify-center py-8 min-[491px]:w-[80vw]">
+        <section x-data="{
+                gender: 'female',
+                height: '',
+                weight: '',
+                age: '',
+                bmr: null,
+                // fórmula de Mifflin-St Jeor
+                calculate() {
+                    const base = 10 * this.weight + 6.25 * this.height - 5 * this.age;
+                    this.bmr = Math.round(base + (this.gender === 'male' ? 5 : -161));
+                },
+            }"
+            class="flex w-full flex-col gap-4 rounded-[10px] bg-white p-4 shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] min-[491px]:p-8">
+            <div class="text-center">
+                <h2 class="text-[1.8rem] text-secondary"><i class="fas fa-fire"></i> Cálculo de TMB</h2>
             </div>
 
-            <form action="">
-                <div class="form-group">
-                    <label for="gender">Gênero</label>
-                    <select name="gender" id="gender">
+            <form @submit.prevent="calculate()" class="flex flex-col gap-4">
+                <div class="flex flex-col gap-2">
+                    <label for="gender" class="font-semibold text-secondary">Gênero</label>
+                    <select name="gender" id="gender" x-model="gender"
+                        class="rounded-[5px] border-2 border-line p-3 font-[inherit] focus:border-primary focus:outline-none">
                         <option value="female">Feminino</option>
                         <option value="male">Masculino</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="height">Altura (cm)</label>
-                    <input type="number" id="height" placeholder="Ex: 175" />
+                <div class="flex flex-col gap-2">
+                    <label for="height" class="font-semibold text-secondary">Altura (cm)</label>
+                    <input type="number" step="any" min="1" required id="height" placeholder="Ex: 175" x-model.number="height"
+                        class="rounded-[5px] border-2 border-line p-3 font-[inherit] focus:border-primary focus:outline-none" />
                 </div>
 
-                <div class="form-group">
-                    <label for="weight">Peso (kg)</label>
-                    <input type="number" id="weight" placeholder="Ex: 70" />
+                <div class="flex flex-col gap-2">
+                    <label for="weight" class="font-semibold text-secondary">Peso (kg)</label>
+                    <input type="number" step="any" min="1" required id="weight" placeholder="Ex: 70" x-model.number="weight"
+                        class="rounded-[5px] border-2 border-line p-3 font-[inherit] focus:border-primary focus:outline-none" />
                 </div>
 
-                <div class="form-group">
-                    <label for="age">Idade (anos)</label>
-                    <input type="number" id="age" placeholder="18" />
+                <div class="flex flex-col gap-2">
+                    <label for="age" class="font-semibold text-secondary">Idade (anos)</label>
+                    <input type="number" min="1" required id="age" placeholder="18" x-model.number="age"
+                        class="rounded-[5px] border-2 border-line p-3 font-[inherit] focus:border-primary focus:outline-none" />
                 </div>
 
-                <button type="submit" class="action-btn">Calcular calorias</button>
-                <a class="action-btn btn-back" href="../index.html">Voltar</a>
+                <button type="submit"
+                    class="cursor-pointer rounded-[10px] bg-primary p-3 text-center font-semibold text-white transition hover:bg-primary-dark">Calcular calorias</button>
+                <a href="../index.html"
+                    class="rounded-[10px] bg-secondary p-3 text-center font-semibold text-white no-underline transition hover:bg-ink">Voltar</a>
             </form>
 
-            <div class="result-box">
+            <div class="mt-7 rounded-[10px] bg-[#e8f8f5] p-4 text-center">
                 <p>Gasto calórico basal:</p>
-                <p>0000</p>
+                <p x-text="bmr === null ? '0000' : bmr">0000</p>
                 <p>Kcal/dia</p>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="p-4 text-center text-muted">
         <p>© 2026 FitLife</p>
     </footer>
 </body>

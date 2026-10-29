@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-BR">
 
@@ -11,51 +10,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/water.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind.config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
     <title>FitLife - Água</title>
 </head>
 
-<body>
-    <nav>
-        <a href="../index.html" id="logo">
+<body class="bg-page font-sans text-ink">
+    <nav class="flex h-auto flex-col items-center justify-center gap-2 bg-white p-4 min-[491px]:h-20 min-[491px]:flex-row min-[491px]:justify-between min-[491px]:px-20 min-[491px]:py-0">
+        <a href="../index.html" class="text-2xl font-semibold text-primary no-underline">
             <i class="fas fa-heartbeat"></i>
             FitLife
         </a>
 
-        <ul class="nav-links">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="./imc.html" class="nav-link">IMC</a></li>
-            <li><a href="./tmb.html" class="nav-link">TMB</a></li>
-            <li><a href="./water.html" class="nav-link active">Água</a></li>
+        <ul class="flex list-none flex-wrap justify-center gap-3 min-[491px]:gap-6">
+            <li><a href="../index.html" class="text-secondary no-underline transition hover:text-primary">Home</a></li>
+            <li><a href="./imc.html" class="text-secondary no-underline transition hover:text-primary">IMC</a></li>
+            <li><a href="./tmb.html" class="text-secondary no-underline transition hover:text-primary">TMB</a></li>
+            <li><a href="./water.html" class="border-b-[3px] border-primary text-primary no-underline">Água</a></li>
         </ul>
     </nav>
 
-    <main>
-        <section class="tool-container">
-            <div class="tool-container-title">
-                <h2><i class="fas fa-tint"></i> Hidratação</h2>
-                <p>Meta: 2500ml</p>
+    <main class="mx-auto flex w-[90vw] items-center justify-center py-8 min-[491px]:w-[80vw]">
+        <section x-data="{
+                total: 0,
+                goal: 2500,
+                get percent() { return Math.min(100, Math.round(this.total / this.goal * 100)); },
+            }"
+            class="flex w-full flex-col gap-4 rounded-[10px] bg-white p-4 shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] min-[491px]:p-8">
+            <div class="text-center">
+                <h2 class="text-[1.8rem] text-secondary"><i class="fas fa-tint"></i> Hidratação</h2>
+                <p>Meta: <span x-text="goal">2500</span>ml</p>
             </div>
 
-            <div class="water-controls">
-                <button type="button" class="action-btn btn-water-add">+ 250ml</button>
-                <button type="button" class="action-btn btn-water-reset">Zerar</button>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <button type="button" @click="total += 250"
+                    class="cursor-pointer rounded-[10px] bg-water p-3 text-center font-semibold text-white transition hover:bg-water-dark">+ 250ml</button>
+                <button type="button" @click="total = 0"
+                    class="cursor-pointer rounded-[10px] bg-danger p-3 text-center font-semibold text-white transition hover:bg-danger-dark">Zerar</button>
             </div>
 
-            <div class="progress-container">
-                <div id="water-bar" class="progress-bar">0%</div>
+            <div class="h-8 w-full rounded-[32px] bg-line">
+                <div class="flex h-full items-center justify-center rounded-l-[30px] bg-water font-semibold text-white transition-[width]"
+                    :class="percent === 100 && 'rounded-r-[30px]'"
+                    :style="{ width: percent + '%' }"
+                    x-text="percent + '%'">0%</div>
             </div>
 
-            <p>Total: 0 ml</p>
+            <p>Total: <span x-text="total">0</span> ml</p>
 
-            <a class="action-btn btn-back" href="../index.html">Voltar</a>
+            <a href="../index.html"
+                class="rounded-[10px] bg-secondary p-3 text-center font-semibold text-white no-underline transition hover:bg-ink">Voltar</a>
         </section>
     </main>
 
-    <footer>
+    <footer class="p-4 text-center text-muted">
         <p>© 2026 FitLife</p>
     </footer>
 </body>
