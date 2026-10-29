@@ -28,11 +28,12 @@
 
   <body class="bg-page font-sans text-ink selection:bg-primary/30">
     <nav
+      aria-label="Principal"
       class="flex h-auto flex-col items-center justify-center gap-2 bg-white p-4 min-[491px]:h-20 min-[491px]:flex-row min-[491px]:justify-between min-[491px]:px-20 min-[491px]:py-0"
     >
       <a
         href="../index.html"
-        class="text-2xl font-semibold text-primary no-underline"
+        class="text-2xl font-semibold text-brand no-underline"
       >
         <i class="fas fa-heartbeat"></i>
         FitLife
@@ -44,28 +45,29 @@
         <li>
           <a
             href="../index.html"
-            class="text-secondary no-underline transition hover:text-primary"
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
             >Home</a
           >
         </li>
         <li>
           <a
             href="./imc.html"
-            class="text-secondary no-underline transition hover:text-primary"
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
             >IMC</a
           >
         </li>
         <li>
           <a
             href="./tmb.html"
-            class="border-b-[3px] border-primary text-primary no-underline"
+            aria-current="page"
+            class="relative border-b-[3px] border-primary text-brand no-underline before:absolute before:-inset-y-3 before:inset-x-0"
             >TMB</a
           >
         </li>
         <li>
           <a
             href="./water.html"
-            class="text-secondary no-underline transition hover:text-primary"
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
             >Água</a
           >
         </li>
@@ -85,14 +87,15 @@
                 calculate() {
                     const base = 10 * this.weight + 6.25 * this.height - 5 * this.age;
                     this.bmr = Math.round(base + (this.gender === 'male' ? 5 : -161));
+                    this.$nextTick(() => this.$refs.result.scrollIntoView({ block: 'nearest' }));
                 },
             }"
         class="motion-safe:animate-rise flex w-full flex-col gap-4 rounded-[10px] bg-white p-4 shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] min-[491px]:p-8"
       >
         <div class="text-center">
-          <h2 class="text-[1.8rem] text-secondary">
+          <h1 class="text-[1.8rem] text-secondary">
             <i class="fas fa-fire"></i> Cálculo de TMB
-          </h2>
+          </h1>
         </div>
 
         <form @submit.prevent="calculate()" class="flex flex-col gap-4">
@@ -104,7 +107,7 @@
               name="gender"
               id="gender"
               x-model="gender"
-              class="rounded-[5px] border-2 border-line p-3 font-[inherit] transition-colors focus:border-primary focus:outline-none"
+              class="rounded-[5px] border-2 border-field p-3 font-[inherit] transition-colors placeholder:text-gray-500 focus:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             >
               <option value="female">Feminino</option>
               <option value="male">Masculino</option>
@@ -121,9 +124,11 @@
               min="1"
               required
               id="height"
+              max="250"
+              inputmode="decimal"
               placeholder="Ex: 175"
               x-model.number="height"
-              class="rounded-[5px] border-2 border-line p-3 font-[inherit] transition-colors focus:border-primary focus:outline-none"
+              class="rounded-[5px] border-2 border-field p-3 font-[inherit] transition-colors placeholder:text-gray-500 focus:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             />
           </div>
 
@@ -137,9 +142,11 @@
               min="1"
               required
               id="weight"
+              max="500"
+              inputmode="decimal"
               placeholder="Ex: 70"
               x-model.number="weight"
-              class="rounded-[5px] border-2 border-line p-3 font-[inherit] transition-colors focus:border-primary focus:outline-none"
+              class="rounded-[5px] border-2 border-field p-3 font-[inherit] transition-colors placeholder:text-gray-500 focus:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             />
           </div>
 
@@ -152,15 +159,17 @@
               min="1"
               required
               id="age"
-              placeholder="18"
+              max="120"
+              inputmode="numeric"
+              placeholder="Ex: 18"
               x-model.number="age"
-              class="rounded-[5px] border-2 border-line p-3 font-[inherit] transition-colors focus:border-primary focus:outline-none"
+              class="rounded-[5px] border-2 border-field p-3 font-[inherit] transition-colors placeholder:text-gray-500 focus:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             />
           </div>
 
           <button
             type="submit"
-            class="cursor-pointer rounded-[10px] bg-primary p-3 text-center font-semibold text-white transition hover:bg-primary-dark motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            class="cursor-pointer rounded-[10px] bg-brand p-3 text-center font-semibold text-white transition hover:bg-brand-dark motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
           >
             Calcular calorias
           </button>
@@ -172,12 +181,19 @@
         </form>
 
         <div
+          x-ref="result"
+          role="status"
           class="mt-7 rounded-[10px] bg-[#e8f8f5] p-4 text-center transition duration-500"
-          :class="bmr === null ? 'opacity-50' : 'opacity-100 ring-2 ring-primary/40'"
+          :class="bmr !== null && 'ring-2 ring-primary/40'"
         >
-          <p>Gasto calórico basal:</p>
-          <p x-text="bmr === null ? '0000' : bmr">0000</p>
-          <p>Kcal/dia</p>
+          <p x-show="bmr === null" class="text-muted">
+            Preencha os campos e calcule.
+          </p>
+          <div x-show="bmr !== null" style="display: none">
+            <p>Gasto calórico basal</p>
+            <p class="text-5xl font-bold text-brand" x-text="bmr"></p>
+            <p>kcal por dia</p>
+          </div>
         </div>
       </section>
     </main>

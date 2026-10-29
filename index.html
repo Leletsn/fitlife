@@ -21,11 +21,12 @@
 
   <body class="bg-page font-sans text-ink selection:bg-primary/30">
     <nav
+      aria-label="Principal"
       class="flex h-auto flex-col items-center justify-center gap-2 bg-white p-4 min-[491px]:h-20 min-[491px]:flex-row min-[491px]:justify-between min-[491px]:px-20 min-[491px]:py-0"
     >
       <a
         href="./index.html"
-        class="text-2xl font-semibold text-primary no-underline"
+        class="text-2xl font-semibold text-brand no-underline"
       >
         <i class="fas fa-heartbeat"></i>
         FitLife
@@ -36,28 +37,29 @@
       >
         <li>
           <a
-            class="border-b-[3px] border-primary text-primary no-underline"
+            aria-current="page"
+            class="relative border-b-[3px] border-primary text-brand no-underline before:absolute before:-inset-y-3 before:inset-x-0"
             href="./index.html"
             >Home</a
           >
         </li>
         <li>
           <a
-            class="text-secondary no-underline transition hover:text-primary"
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
             href="./pages/imc.html"
             >IMC</a
           >
         </li>
         <li>
           <a
-            class="text-secondary no-underline transition hover:text-primary"
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
             href="./pages/tmb.html"
             >TMB</a
           >
         </li>
         <li>
           <a
-            class="text-secondary no-underline transition hover:text-primary"
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
             href="./pages/water.html"
             >Água</a
           >
@@ -67,7 +69,7 @@
 
     <header class="py-10 text-center">
       <h1 class="text-[2.5rem] font-bold">
-        Bem-vindo ao <span class="text-primary">FitLife</span>
+        Bem-vindo ao <span class="text-brand">FitLife</span>
       </h1>
       <p>Seu hub central de saúde. Escolha uma ferramenta:</p>
     </header>
@@ -78,7 +80,7 @@
       <section class="flex flex-wrap justify-center gap-6 text-center">
         <a
           href="./pages/imc.html"
-          class="group motion-safe:animate-rise motion-safe:hover:-translate-y-1 [animation-delay:0ms] w-60 rounded-[10px] border-2 border-transparent bg-white p-6 text-secondary no-underline shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] transition-all duration-300 hover:border-primary hover:text-primary"
+          class="group motion-safe:animate-rise motion-safe:hover:-translate-y-1 [animation-delay:0ms] w-60 rounded-[10px] border-2 border-transparent bg-white p-6 text-secondary no-underline shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] transition-all duration-300 hover:border-primary hover:text-brand"
         >
           <i
             class="fas fa-weight mb-4 inline-block text-5xl text-primary transition-transform duration-300 motion-safe:group-hover:scale-110"
@@ -89,7 +91,7 @@
 
         <a
           href="./pages/tmb.html"
-          class="group motion-safe:animate-rise motion-safe:hover:-translate-y-1 [animation-delay:90ms] w-60 rounded-[10px] border-2 border-transparent bg-white p-6 text-secondary no-underline shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] transition-all duration-300 hover:border-primary hover:text-primary"
+          class="group motion-safe:animate-rise motion-safe:hover:-translate-y-1 [animation-delay:90ms] w-60 rounded-[10px] border-2 border-transparent bg-white p-6 text-secondary no-underline shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] transition-all duration-300 hover:border-primary hover:text-brand"
         >
           <i
             class="fas fa-fire mb-4 inline-block text-5xl text-primary transition-transform duration-300 motion-safe:group-hover:scale-110"
@@ -100,7 +102,7 @@
 
         <a
           href="./pages/water.html"
-          class="group motion-safe:animate-rise motion-safe:hover:-translate-y-1 [animation-delay:180ms] w-60 rounded-[10px] border-2 border-transparent bg-white p-6 text-secondary no-underline shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] transition-all duration-300 hover:border-primary hover:text-primary"
+          class="group motion-safe:animate-rise motion-safe:hover:-translate-y-1 [animation-delay:180ms] w-60 rounded-[10px] border-2 border-transparent bg-white p-6 text-secondary no-underline shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] transition-all duration-300 hover:border-primary hover:text-brand"
         >
           <i
             class="fas fa-tint mb-4 inline-block text-5xl text-primary transition-transform duration-300 motion-safe:group-hover:scale-110"
