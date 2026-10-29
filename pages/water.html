@@ -1,63 +1,146 @@
-
 <!doctype html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/water.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind.config.js"></script>
+    <script defer src="../js/water.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
 
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
     <title>FitLife - Água</title>
-</head>
+  </head>
 
-<body>
-    <nav>
-        <a href="../index.html" id="logo">
-            <i class="fas fa-heartbeat"></i>
-            FitLife
-        </a>
+  <body class="bg-page font-sans text-ink selection:bg-primary/30">
+    <nav
+      aria-label="Principal"
+      class="flex h-auto flex-col items-center justify-center gap-2 bg-white p-4 min-[491px]:h-20 min-[491px]:flex-row min-[491px]:justify-between min-[491px]:px-20 min-[491px]:py-0"
+    >
+      <a
+        href="../index.html"
+        class="text-2xl font-semibold text-brand no-underline"
+      >
+        <i class="fas fa-heartbeat"></i>
+        FitLife
+      </a>
 
-        <ul class="nav-links">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="./imc.html" class="nav-link">IMC</a></li>
-            <li><a href="./tmb.html" class="nav-link">TMB</a></li>
-            <li><a href="./water.html" class="nav-link active">Água</a></li>
-        </ul>
+      <ul
+        class="flex list-none flex-wrap justify-center gap-3 min-[491px]:gap-6"
+      >
+        <li>
+          <a
+            href="../index.html"
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="./imc.html"
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
+            >IMC</a
+          >
+        </li>
+        <li>
+          <a
+            href="./tmb.html"
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
+            >TMB</a
+          >
+        </li>
+        <li>
+          <a
+            href="./water.html"
+            aria-current="page"
+            class="relative border-b-[3px] border-primary text-brand no-underline before:absolute before:-inset-y-3 before:inset-x-0"
+            >Água</a
+          >
+        </li>
+      </ul>
     </nav>
 
-    <main>
-        <section class="tool-container">
-            <div class="tool-container-title">
-                <h2><i class="fas fa-tint"></i> Hidratação</h2>
-                <p>Meta: 2500ml</p>
-            </div>
+    <main
+      class="mx-auto flex w-[90vw] items-center justify-center py-8 min-[491px]:w-[80vw]"
+    >
+      <section
+        class="motion-safe:animate-rise flex w-full flex-col gap-4 rounded-[10px] bg-white p-4 shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] min-[491px]:p-8"
+      >
+        <div class="text-center">
+          <h1 class="text-[1.8rem] text-secondary">
+            <i class="fas fa-tint"></i> Hidratação
+          </h1>
+          <p>Meta: <span id="water-goal">2500</span>ml</p>
+        </div>
 
-            <div class="water-controls">
-                <button type="button" class="action-btn btn-water-add">+ 250ml</button>
-                <button type="button" class="action-btn btn-water-reset">Zerar</button>
-            </div>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <button
+            type="button"
+            id="add-water"
+            class="cursor-pointer rounded-[10px] bg-water p-3 text-center font-semibold text-white transition hover:bg-water-dark motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-water"
+          >
+            + 250ml
+          </button>
+          <button
+            type="button"
+            id="reset-water"
+            class="cursor-pointer rounded-[10px] bg-danger p-3 text-center font-semibold text-white transition hover:bg-danger-dark motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-danger"
+          >
+            Zerar
+          </button>
+        </div>
 
-            <div class="progress-container">
-                <div id="water-bar" class="progress-bar">0%</div>
-            </div>
+        <div
+          class="h-8 w-full rounded-[32px] bg-line"
+          role="progressbar"
+          aria-label="Progresso de hidratação"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          id="water-progress"
+        >
+          <div
+            id="water-bar"
+            class="h-full w-0 rounded-l-[30px] bg-water transition-[width] duration-700 ease-out"
+          ></div>
+        </div>
 
-            <p>Total: 0 ml</p>
+        <div role="status" class="flex flex-col gap-4">
+          <p>
+            Total: <span id="water-total">0</span> ml (<span id="water-percent"
+              >0</span
+            >%)
+          </p>
 
-            <a class="action-btn btn-back" href="../index.html">Voltar</a>
-        </section>
+          <p
+            id="goal-message"
+            class="hidden text-center font-semibold text-water"
+          >
+            <i class="fas fa-check"></i> Meta de hoje batida
+          </p>
+        </div>
+
+        <a
+          href="../index.html"
+          class="rounded-[10px] bg-secondary p-3 text-center font-semibold text-white no-underline transition hover:bg-ink motion-safe:active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+          >Voltar</a
+        >
+      </section>
     </main>
 
-    <footer>
-        <p>© 2026 FitLife</p>
+    <footer class="p-4 text-center text-muted">
+      <p>© 2026 FitLife</p>
     </footer>
-</body>
-
+  </body>
 </html>

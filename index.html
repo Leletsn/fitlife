@@ -1,60 +1,116 @@
 <!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./tailwind.config.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>FitLife</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./css/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <title>FitLife</title>
-</head>
-
-<body>
-  <nav>
-    <a href="./index.html" id="logo">
-      <i class="fas fa-heartbeat"></i>
-      FitLife
-    </a>
-
-
-    <ul class="nav-links">
-      <li><a class="nav-link active" href="./index.html">Home</a></li>
-      <li><a class="nav-link" href="./pages/imc.html">IMC</a></li>
-      <li><a class="nav-link" href="./pages/tmb.html">TMB</a></li>
-      <li><a class="nav-link" href="./pages/water.html">Água</a></li>
-    </ul>
-  </nav>
-  <header class="header-container">
-    <h1>Bem-vindo ao <span>FitLife</span></h1>
-    <p>Seu hub central de saúde. Escolha uma ferramenta:</p>
-  </header>
-  <main>
-    <section class="cards-section">
-      <a href="./pages/imc.html" class="card">
-        <i class="fas fa-weight"></i>
-        <h3>Calculadora IMC</h3>
-        <p>Calcule gasto calórico.</p>
+  <body class="bg-page font-sans text-ink selection:bg-primary/30">
+    <nav
+      aria-label="Principal"
+      class="flex h-auto flex-col items-center justify-center gap-2 bg-white p-4 min-[491px]:h-20 min-[491px]:flex-row min-[491px]:justify-between min-[491px]:px-20 min-[491px]:py-0"
+    >
+      <a
+        href="./index.html"
+        class="text-2xl font-semibold text-brand no-underline"
+      >
+        <i class="fas fa-heartbeat"></i>
+        FitLife
       </a>
 
-      <a href="./pages/tmb.html" class="card">
-        <i class="fas fa-fire"></i>
-        <h3>Taxa Metabólica Basal</h3>
-        <p>Calcule gasto calórico</p>
-      </a>
+      <ul
+        class="flex list-none flex-wrap justify-center gap-3 min-[491px]:gap-6"
+      >
+        <li>
+          <a
+            aria-current="page"
+            class="relative border-b-[3px] border-primary text-brand no-underline before:absolute before:-inset-y-3 before:inset-x-0"
+            href="./index.html"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
+            href="./pages/imc.html"
+            >IMC</a
+          >
+        </li>
+        <li>
+          <a
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
+            href="./pages/tmb.html"
+            >TMB</a
+          >
+        </li>
+        <li>
+          <a
+            class="relative text-secondary no-underline transition before:absolute before:-inset-y-3 before:inset-x-0 hover:text-brand"
+            href="./pages/water.html"
+            >Água</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-      <a href="./pages/water.html" class="card">
-        <i class="fas fa-tint"></i>
-        <h3>Hidratação</h3>
-        <p>Saiba a quantidade exata de água que seu corpo precisa</p>
-      </a>
-    </section>
-  </main>
+    <header class="py-10 text-center">
+      <h1 class="text-[2.5rem] font-bold">
+        Bem-vindo ao <span class="text-brand">FitLife</span>
+      </h1>
+      <p>Seu hub central de saúde. Escolha uma ferramenta:</p>
+    </header>
 
-</body>
+    <main
+      class="mx-auto flex w-[90vw] items-center justify-center py-8 min-[491px]:w-[80vw]"
+    >
+      <section class="flex flex-wrap justify-center gap-6 text-center">
+        <a
+          href="./pages/imc.html"
+          class="group motion-safe:animate-rise motion-safe:hover:-translate-y-1 [animation-delay:0ms] w-60 rounded-[10px] border-2 border-transparent bg-white p-6 text-secondary no-underline shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] transition-all duration-300 hover:border-primary hover:text-brand"
+        >
+          <i
+            class="fas fa-weight mb-4 inline-block text-5xl text-primary transition-transform duration-300 motion-safe:group-hover:scale-110"
+          ></i>
+          <h2 class="text-xl font-semibold">Calculadora IMC</h2>
+          <p>Calcule seu índice de massa corporal.</p>
+        </a>
 
+        <a
+          href="./pages/tmb.html"
+          class="group motion-safe:animate-rise motion-safe:hover:-translate-y-1 [animation-delay:90ms] w-60 rounded-[10px] border-2 border-transparent bg-white p-6 text-secondary no-underline shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] transition-all duration-300 hover:border-primary hover:text-brand"
+        >
+          <i
+            class="fas fa-fire mb-4 inline-block text-5xl text-primary transition-transform duration-300 motion-safe:group-hover:scale-110"
+          ></i>
+          <h2 class="text-xl font-semibold">Taxa Metabólica Basal</h2>
+          <p>Calcule gasto calórico</p>
+        </a>
+
+        <a
+          href="./pages/water.html"
+          class="group motion-safe:animate-rise motion-safe:hover:-translate-y-1 [animation-delay:180ms] w-60 rounded-[10px] border-2 border-transparent bg-white p-6 text-secondary no-underline shadow-[0_0_10px_10px_rgba(0,0,0,0.05)] transition-all duration-300 hover:border-primary hover:text-brand"
+        >
+          <i
+            class="fas fa-tint mb-4 inline-block text-5xl text-primary transition-transform duration-300 motion-safe:group-hover:scale-110"
+          ></i>
+          <h2 class="text-xl font-semibold">Hidratação</h2>
+          <p>Saiba a quantidade exata de água que seu corpo precisa</p>
+        </a>
+      </section>
+    </main>
+  </body>
 </html>
